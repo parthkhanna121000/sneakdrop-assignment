@@ -391,3 +391,93 @@
       setTimeout(() => location.reload(), 3000);
     });
 })();
+
+const buttons = document.querySelectorAll("button");
+
+buttons.forEach((button) => {
+  button.addEventListener("click", () => {
+    if (button.disabled) return;
+
+    button.classList.remove("success-flash");
+
+    void button.offsetWidth;
+
+    button.classList.add("success-flash");
+  });
+});
+
+const modalOverlay = document.getElementById("modalOverlay");
+
+const modal = document.getElementById("modal");
+
+const modalClose = document.getElementById("modalClose");
+
+const modalIcon = document.getElementById("modalIcon");
+
+const modalEyebrow = document.getElementById("modalEyebrow");
+
+const modalTitle = document.getElementById("modalTitle");
+
+const modalText = document.getElementById("modalText");
+
+const modalLoader = document.getElementById("modalLoader");
+
+const modalActions = document.getElementById("modalActions");
+
+const modalPrimary = document.getElementById("modalPrimary");
+
+const modalSecondary = document.getElementById("modalSecondary");
+
+function openModal({
+  icon = "👟",
+  eyebrow = "SNEAKER DROP",
+  title = "Ready to secure your pair?",
+  text = "You're about to enter the limited sneaker queue.",
+  primaryText = "Continue",
+  secondaryText = "Cancel",
+  type = "",
+}) {
+  modal.className = `modal ${type}`;
+
+  modalIcon.textContent = icon;
+
+  modalEyebrow.textContent = eyebrow;
+
+  modalTitle.textContent = title;
+
+  modalText.textContent = text;
+
+  modalPrimary.textContent = primaryText;
+
+  modalSecondary.textContent = secondaryText;
+
+  modalLoader.hidden = true;
+
+  modalActions.hidden = false;
+
+  modalOverlay.classList.add("active");
+
+  modalOverlay.setAttribute("aria-hidden", "false");
+}
+
+function closeModal() {
+  modalOverlay.classList.remove("active");
+
+  modalOverlay.setAttribute("aria-hidden", "true");
+}
+
+modalClose.addEventListener("click", closeModal);
+
+modalSecondary.addEventListener("click", closeModal);
+
+modalOverlay.addEventListener("click", (event) => {
+  if (event.target === modalOverlay) {
+    closeModal();
+  }
+});
+
+document.addEventListener("keydown", (event) => {
+  if (event.key === "Escape") {
+    closeModal();
+  }
+});

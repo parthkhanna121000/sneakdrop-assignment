@@ -2,46 +2,356 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1"
+  />
+
   <title>Sneaker Drop</title>
+
   <link rel="stylesheet" href="style.css" />
 </head>
+
 <body>
+
   <main>
-    <h1>👟 SNEAKER DROP</h1>
 
-    <section class="card" id="stock">
-      <div class="big"><span id="pairsLeft">–</span><span class="of"> / 20 pairs left</span></div>
-      <div class="muted" id="counts">&nbsp;</div>
+    <!-- HEADER -->
+    <header class="header">
+
+      <div class="logo">
+        👟
+      </div>
+
+      <h1>Sneaker Drop</h1>
+
+      <p class="subtitle">
+        Limited release · 20 pairs only
+      </p>
+
+    </header>
+
+
+    <!-- STOCK -->
+    <section class="card stock-card" id="stock">
+
+      <div class="stock-header">
+
+        <p class="section-label">
+          Live inventory
+        </p>
+
+        <span class="live-pill">
+          <span class="live-dot"></span>
+          Live
+        </span>
+
+      </div>
+
+      <div class="stock-number">
+
+        <span
+          id="pairsLeft"
+          class="big"
+        >
+          –
+        </span>
+
+        <span class="of">
+          / 20 pairs left
+        </span>
+
+      </div>
+
+      <p class="stock-description">
+        Inventory updates automatically as purchases are confirmed.
+      </p>
+
+      <div class="progress-wrapper">
+
+        <div class="progress-track">
+          <div
+            id="stockProgress"
+            class="progress-bar"
+            style="width: 0%"
+          ></div>
+        </div>
+
+        <div class="progress-info">
+
+          <span id="counts">
+            Loading inventory…
+          </span>
+
+          <span>
+            20 total
+          </span>
+
+        </div>
+
+      </div>
+
     </section>
 
+
+    <!-- USER STATUS -->
     <section class="card" id="you">
-      <h2>Your status</h2>
-      <p id="statusText" class="status">Loading…</p>
 
-      <p id="countdownRow" hidden><span id="countdownLabel">Time remaining</span>: <b id="countdown" class="timer">--:--</b></p>
-      <p id="queueRow" hidden>You are <b>#<span id="queuePos">–</span></b> in line</p>
-      <p>Pairs purchased: <b id="purchased">0</b> / 2</p>
+      <div class="status-header">
 
-      <div class="buttons">
-        <button id="buyBtn" disabled>Buy</button>
-        <button id="payBtn" disabled>Pay now</button>
-        <button id="leaveBtn" class="secondary" disabled>Leave line</button>
+        <h2 class="status-title">
+          Your drop status
+        </h2>
+
+        <span
+          id="statusBadge"
+          class="status-badge"
+        >
+          Checking…
+        </span>
+
       </div>
 
-      <p id="message" class="message" role="status"></p>
+
+      <p
+        id="statusText"
+        class="status"
+      >
+        Loading…
+      </p>
+
+
+      <!-- TIMER -->
+      <div
+        id="countdownRow"
+        class="timer-box"
+        hidden
+      >
+
+        <span class="timer-label">
+          <span id="countdownLabel">
+            Time remaining
+          </span>
+        </span>
+
+        <b
+          id="countdown"
+          class="timer"
+        >
+          --:--
+        </b>
+
+      </div>
+
+
+      <!-- QUEUE -->
+      <div
+        id="queueRow"
+        class="queue-box"
+        hidden
+      >
+
+        <p class="queue-label">
+          Your position in the queue
+        </p>
+
+        <p class="queue-position">
+          #<span id="queuePos">–</span>
+        </p>
+
+      </div>
+
+
+      <!-- USER STATS -->
+      <div class="status-detail">
+
+        <div class="stat">
+
+          <span class="stat-label">
+            Pairs purchased
+          </span>
+
+          <span class="stat-value">
+            <span id="purchased">0</span> / 2
+          </span>
+
+        </div>
+
+        <div class="stat">
+
+          <span class="stat-label">
+            Drop limit
+          </span>
+
+          <span class="stat-value">
+            2 pairs
+          </span>
+
+        </div>
+
+      </div>
+
+
+      <!-- ACTIONS -->
+      <div class="buttons">
+
+        <button
+          id="buyBtn"
+          disabled
+        >
+          Buy pair
+        </button>
+
+        <button
+          id="payBtn"
+          disabled
+        >
+          Pay now
+        </button>
+
+        <button
+          id="leaveBtn"
+          class="secondary"
+          disabled
+        >
+          Leave line
+        </button>
+
+      </div>
+
+
+      <p
+        id="message"
+        class="message"
+        role="status"
+      ></p>
+
     </section>
 
-    <details class="card">
-      <summary>Demo tools</summary>
-      <p class="muted">Your user id: <code id="userId">–</code></p>
-      <div class="buttons">
-        <button id="crowdBtn" class="secondary">Simulate 50 other buyers</button>
-        <button id="newUserBtn" class="secondary">Become a new user</button>
+
+    <!-- DEMO TOOLS -->
+    <details class="card demo-card">
+
+      <summary>
+        Demo tools
+      </summary>
+
+      <div class="demo-content">
+
+        <p class="muted">
+          Current demo user:
+          <code id="userId">–</code>
+        </p>
+
+        <div class="buttons">
+
+          <button
+            id="crowdBtn"
+            class="secondary"
+          >
+            Simulate 50 buyers
+          </button>
+
+          <button
+            id="newUserBtn"
+            class="secondary"
+          >
+            Become a new user
+          </button>
+
+        </div>
+
+        <p
+          id="demoMessage"
+          class="muted"
+        ></p>
+
       </div>
-      <p id="demoMessage" class="muted"></p>
+
     </details>
+
   </main>
+
+
   <script src="app.js"></script>
+<!-- =========================
+     INTERACTION MODAL
+========================= -->
+
+<div
+  id="modalOverlay"
+  class="modal-overlay"
+  aria-hidden="true"
+>
+  <div
+    id="modal"
+    class="modal"
+    role="dialog"
+    aria-modal="true"
+  >
+
+    <button
+      id="modalClose"
+      class="modal-close"
+      aria-label="Close"
+    >
+      ×
+    </button>
+
+    <div
+      id="modalIcon"
+      class="modal-icon"
+    >
+      👟
+    </div>
+
+    <p
+      id="modalEyebrow"
+      class="modal-eyebrow"
+    >
+      SNEAKER DROP
+    </p>
+
+    <h3 id="modalTitle">
+      Ready to secure your pair?
+    </h3>
+
+    <p
+      id="modalText"
+      class="modal-text"
+    >
+      You're about to enter the limited sneaker queue.
+    </p>
+
+    <div
+      id="modalLoader"
+      class="modal-loader"
+      hidden
+    >
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+
+    <div
+      id="modalActions"
+      class="modal-actions"
+    >
+      <button
+        id="modalPrimary"
+      >
+        Continue
+      </button>
+
+      <button
+        id="modalSecondary"
+        class="secondary"
+      >
+        Cancel
+      </button>
+    </div>
+
+  </div>
+</div>
 </body>
 </html>
