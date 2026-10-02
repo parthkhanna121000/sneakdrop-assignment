@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Sneaker Drop</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <main>
+    <h1>👟 SNEAKER DROP</h1>
+
+    <section class="card" id="stock">
+      <div class="big"><span id="pairsLeft">–</span><span class="of"> / 20 pairs left</span></div>
+      <div class="muted" id="counts">&nbsp;</div>
+    </section>
+
+    <section class="card" id="you">
+      <h2>Your status</h2>
+      <p id="statusText" class="status">Loading…</p>
+
+      <p id="countdownRow" hidden><span id="countdownLabel">Time remaining</span>: <b id="countdown" class="timer">--:--</b></p>
+      <p id="queueRow" hidden>You are <b>#<span id="queuePos">–</span></b> in line</p>
+      <p>Pairs purchased: <b id="purchased">0</b> / 2</p>
+
+      <div class="buttons">
+        <button id="buyBtn" disabled>Buy</button>
+        <button id="payBtn" disabled>Pay now</button>
+        <button id="leaveBtn" class="secondary" disabled>Leave line</button>
+      </div>
+
+      <p id="message" class="message" role="status"></p>
+    </section>
+
+    <details class="card">
+      <summary>Demo tools</summary>
+      <p class="muted">Your user id: <code id="userId">–</code></p>
+      <div class="buttons">
+        <button id="crowdBtn" class="secondary">Simulate 50 other buyers</button>
+        <button id="newUserBtn" class="secondary">Become a new user</button>
+      </div>
+      <p id="demoMessage" class="muted"></p>
+    </details>
+  </main>
+  <script src="app.js"></script>
+</body>
+</html>
